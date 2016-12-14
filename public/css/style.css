@@ -1,0 +1,119 @@
+body { color: #5D5555; }
+
+/*=============== Misc ===============*/ 
+
+img {
+    width: 50px;
+    height: 45px !important;
+    padding: 0.2em;
+    margin-right: .5em;
+    border: 1px solid #ECDEDE;
+}
+
+textarea { resize: none; }
+
+a,
+a:hover,
+a:focus { text-decoration: none; }
+
+
+
+.login,
+.register {
+	max-width: 350px;
+	margin: 5em auto;
+    padding: 1em 1.5em 3em;
+	box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+}
+
+.register { margin-top: 2em; }
+
+.alert {
+	padding-left: 2em;
+}
+
+table th {
+	text-transform: uppercase;
+}
+
+ul.admin {
+    display: flex;
+    align-items: center;
+}
+
+aside li {
+    border-bottom: 1px solid #DDD4D4;
+}
+aside li:first-child { border-top: 1px solid #DDD4D4; }
+
+aside li > a {
+    padding: 2em !important;
+	text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+
+/*=============== Modal ===============*/ 
+
+.modal-content {
+    border-radius: 0;
+}
+
+/*=============== Chat ===============*/ 
+
+.wrapper {
+    /*position: relative;*/
+    width: 100%;
+}
+
+.users {
+    position: absolute;
+    top: 5em;
+    left: 2em;
+    bottom: 0;
+}
+
+.users-list { padding: 0.5em 1.5em; }
+
+.users-list li {
+    margin-bottom: 0.1em;
+}
+
+.chat {
+    position: relative;
+    right: 0;
+    width: 50%;
+    height: 500px;
+    color: #fff;
+    margin: 5em auto 0;
+    overflow: hidden;
+}
+#form-chat {
+    position: absolute;
+    bottom: 4em;
+    left: 0;
+    right: 0;
+}
+
+.chat-sender {
+
+}
+
+.chat-sender p,
+.chat-reciever p {
+    background: #13A2DE;
+    padding: .5em 1em;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.chat-reciever p { background: #FB9028; }
+
+
+
+
+/*=============== Media Queries ===============*/ 
+
+@media (min-width: 1200px) {
+    .container { width: 90%; }
+}
