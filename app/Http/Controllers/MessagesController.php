@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatMessage;
 use App\Message;
 use App\User;
 use Illuminate\Http\Request;
@@ -26,13 +27,17 @@ class MessagesController extends Controller
         $user = new User;
         $result = $user->sendMessage($request);
 
+        event(new ChatMessage());
+
         return response()->json(['success' => true]);
     }
 
-    public function show(Message $message)
+    public function show($id)
     {
-        return 'ur here';
-        return $message;
+        $message = new Message();
+        $messages = $message->conversation($id);
+      
+        return response()->json(['messages' => $messages]);
     }
 
     public function edit($id)

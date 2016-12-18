@@ -25,7 +25,7 @@ class UsersController extends Controller
 		];*/
 
 		// login with custom id
-		Auth::loginUsingId(3);
+		Auth::loginUsingId(13);
 
 		return redirect('message');
 

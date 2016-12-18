@@ -2,6 +2,10 @@ body { color: #5D5555; }
 
 /*=============== Misc ===============*/ 
 
+.conversation p {
+    color: black;
+}
+
 img {
     width: 50px;
     height: 45px !important;
@@ -52,6 +56,13 @@ aside li > a {
     font-size: 0.9em;
 }
 
+/*=============== profile ===============*/ 
+.profile {
+    position: absolute;
+    top: 1em;
+    right: 3em;
+}
+
 
 /*=============== Modal ===============*/ 
 
@@ -79,6 +90,14 @@ aside li > a {
     margin-bottom: 0.1em;
 }
 
+.conversation {
+    overflow: auto;
+    height: 300px;
+    max-height: 300px;
+    position: absolute;
+    right: 0;
+}
+
 .chat {
     position: relative;
     right: 0;
@@ -86,7 +105,7 @@ aside li > a {
     height: 500px;
     color: #fff;
     margin: 5em auto 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 #form-chat {
     position: absolute;

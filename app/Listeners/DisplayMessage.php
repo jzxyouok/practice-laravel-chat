@@ -26,6 +26,6 @@ class DisplayMessage
      */
     public function handle(ChatMessage $event)
     {
-        //
+        return 'getting chat messages....';
     }
 }

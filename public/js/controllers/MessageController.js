@@ -1,6 +1,8 @@
 app.controller('MessageController', ['$scope', '$http', function($scope, $http){
 	
 	$scope.userId = 0;
+	$scope.chat = {};
+	$scope.message = {};
 
 	var getUserId = function(name) {
 		$http
@@ -8,7 +10,7 @@ app.controller('MessageController', ['$scope', '$http', function($scope, $http){
 			.then(function(response) {
 				$scope.userId = response.data.id;
 
-				displayMessage($scope.userId);
+				displayMessage();
 
 				// console.log($scope.userId);
 			});
@@ -25,48 +27,57 @@ app.controller('MessageController', ['$scope', '$http', function($scope, $http){
 	$scope.sendMessage = function(message) {
 		var isMessageEmpty = ($('textarea').val().length > 0) ? true : false;
 
+		$('div.conversation').scrollTop(0,document.body.scrollHeight);
+
+
 		if ($scope.userId > 0 && isMessageEmpty) {
 			message.receiver_id = $scope.userId;
 
 			$http
 				.post('message', message)
 				.then(function(response) {
-					console.log(response.data);
+					$scope.message.body = '';
+
+					// $scope.chat.push(message);
+					displayMessage();
 				}, function(error) {
 					console.log(error);
 				});
 		} else alert('Error Occured: Make sure you select user to chat and message must not empty.');
 	};
 
-	var displayMessage = function(userId) {
+	var displayMessage = function() {
+		var userId = $scope.userId;
+
 		if (userId > 0) {
 			$http
 				.get('/message/' + userId)
 				.then(function(response) {
-					console.log(response.data);
+					$scope.chat = response.data.messages;
 				}, function(error) {
 					console.log(error);
 				});
 		}
-		
 	};
 
 	/*=============== Pusher ===============*/ 
 	var pusher;
 
 	var initPusher = function() {
+		// Pusher.logToConsole = true;
+
 		pusher = new Pusher('416be529c9760ba448bc', {
 			encrypted: true
 		});
-	}; //initPusher();
+	}; initPusher();
 
 	var displayMessageRealTime = function(channelName) {
 		var channel = pusher.subscribe(channelName);
 
-		channel.bind('App\\Events\\ChatMessage', function(data) {
-			console.log(data);
+		channel.bind('App\\Events\\ChatMessage', function() {
+			displayMessage();
 		});
-	}; //displayMessageRealTime('dislay-message');
+	}; displayMessageRealTime('dislay-message');
 
 
 }]);
