@@ -69,7 +69,7 @@ app.controller('MessageController', ['$scope', '$http', function($scope, $http){
 		pusher = new Pusher('416be529c9760ba448bc', {
 			encrypted: true
 		});
-	}; initPusher();
+	}; //initPusher();
 
 	var displayMessageRealTime = function(channelName) {
 		var channel = pusher.subscribe(channelName);
@@ -77,7 +77,7 @@ app.controller('MessageController', ['$scope', '$http', function($scope, $http){
 		channel.bind('App\\Events\\ChatMessage', function() {
 			displayMessage();
 		});
-	}; displayMessageRealTime('dislay-message');
+	}; //displayMessageRealTime('dislay-message');
 
 
 }]);
